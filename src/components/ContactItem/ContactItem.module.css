@@ -1,0 +1,24 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  width: 80px;
+  margin: 0 10px;
+  color: azure;
+  text-transform: capitalize;
+  background: rgb(236, 0, 140);
+  background: linear-gradient(
+    0deg,
+    rgba(236, 0, 140, 1) 0%,
+    rgba(252, 103, 103, 1) 80%
+  );
+  cursor: pointer;
+}
+.button:hover {
+  background-color: rgb(197, 32, 65);
+}

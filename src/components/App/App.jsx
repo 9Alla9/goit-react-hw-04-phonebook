@@ -15,14 +15,12 @@ const DefaultContacts = [
 const App = () => {
   const [contacts, setContacts] = useState(DefaultContacts);
   const [filter, setFilter] = useState('');
-
   useEffect(() => {
     const contacts = localStorage.getItem('contacts');
     if (contacts) {
       setContacts(JSON.parse(contacts));
     }
   }, []);
-
   useEffect(() => {
     if (contacts) {
       localStorage.setItem('contacts', JSON.stringify(contacts));
@@ -44,11 +42,8 @@ const App = () => {
       ...prevContacts,
     ]);
   };
-
   const removeName = id => {
-    setContacts(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== id),
-    }));
+    setContacts(contacts.filter(contact => contact.id !== id));
   };
 
   const handleFilter = e => {

@@ -15,12 +15,14 @@ const DefaultContacts = [
 const App = () => {
   const [contacts, setContacts] = useState(DefaultContacts);
   const [filter, setFilter] = useState('');
+
   useEffect(() => {
     const contacts = localStorage.getItem('contacts');
     if (contacts) {
       setContacts(JSON.parse(contacts));
     }
   }, []);
+
   useEffect(() => {
     if (contacts) {
       localStorage.setItem('contacts', JSON.stringify(contacts));
@@ -28,10 +30,14 @@ const App = () => {
   }, [contacts]);
 
   const addName = ({ name, number }) => {
-    const names = contacts.map(contact => contact.name);
-    if (names.indexOf(name) >= 0) {
-      alert(name + ' is already in contacts');
-      return;
+    if (
+      contacts.find(
+        contact =>
+          contact.name.toLowerCase() === name.toLowerCase() ||
+          contact.number === number
+      )
+    ) {
+      return alert(`${name} or ${number} is contacts`);
     }
     setContacts(prevContacts => [
       { name, number, id: nanoid() },

@@ -5,7 +5,6 @@ import css from './ContactForm.module.css';
 const ContactForm = ({ onSubmit }) => {
   const [name, setname] = useState('');
   const [number, setnumber] = useState('');
-
   const handleChange = e => {
     const { name: inputName, value } = e.currentTarget;
     if (inputName === 'name') {
@@ -14,7 +13,6 @@ const ContactForm = ({ onSubmit }) => {
       setnumber(value);
     }
   };
-
   const handleSubmit = e => {
     e.preventDefault();
     onSubmit({ name, number });
@@ -57,5 +55,4 @@ const ContactForm = ({ onSubmit }) => {
 ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
-
 export default ContactForm;
